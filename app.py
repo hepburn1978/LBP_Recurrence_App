@@ -33,7 +33,7 @@ st.set_page_config(
 # =========================================================
 MODEL_PATH = None
 MODEL_PATTERNS = [
-    "best_models/BestModel_*.joblib",
+    "best_model/BestModel_*.joblib",
     "BestModel_*.joblib"
 ]
 
