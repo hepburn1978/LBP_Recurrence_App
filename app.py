@@ -31,7 +31,7 @@ st.set_page_config(
 # 1. 模型路径
 #    如果你想固定模型文件路径，直接改 MODEL_PATH
 # =========================================================
-MODEL_PATH = "best_models/BestModel_Label_NRS_LR.joblib"
+MODEL_PATH = "best_model/BestModel_Label_NRS_LR.joblib"
 
 
 @st.cache_resource
