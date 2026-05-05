@@ -31,11 +31,28 @@ st.set_page_config(
 # 1. 模型路径
 #    如果你想固定模型文件路径，直接改 MODEL_PATH
 # =========================================================
-MODEL_PATH = None
-MODEL_PATTERNS = [
-    "best_model/BestModel_*.joblib",
-    "BestModel_*.joblib"
-]
+MODEL_PATH = "best_models/BestModel_Label_NRS_LR.joblib"
+
+
+@st.cache_resource
+def load_bundle(path):
+    return joblib.load(path)
+
+
+bundle = None
+load_error = None
+
+try:
+    model_path = MODEL_PATH
+    if not os.path.exists(model_path):
+        raise FileNotFoundError(f"Model file not found: {model_path}")
+    bundle = load_bundle(model_path)
+except Exception as e:
+    load_error = e
+
+if bundle is None:
+    st.error(f"Model loading failed: {load_error}")
+    st.stop()
 
 
 # =========================================================
